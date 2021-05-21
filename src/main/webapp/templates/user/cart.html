@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<H1 th:text="|Total price: ${total}|"></H1>
+<ul>
+    <li th:each="product : ${products}">
+        <img style="height: 200px; width: auto;" th:src="${product.imagePath}">
+        <p th:text="${product.name}"></p>
+        <p th:text="${product.price}"></p>
+        <form th:action="@{|/user/removeFromCart/${product.productId}|}" th:method="post">
+            <input type="submit" value="Remove from cart"/>
+        </form>
+    </li>
+</ul>
+</body>
+</html>

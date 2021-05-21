@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+<ul>
+    <li th:each="product : ${products}">
+        <img style="height: 400px; width: auto;" th:src="${product.imagePath}">
+        <p th:text="${product.name}"></p>
+        <p th:text="${product.price}"></p>
+        <form th:action="@{|/user/addToCart/${product.productId}|}" th:method="get">
+            <input type="submit" value="Add to cart"/>
+        </form>
+        <form sec:authorize="hasRole('ROLE_ADMIN')" th:action="@{|/admin/deleteProduct/${product.productId}|}" th:method="get">
+        <input type="submit" value="Delete Product"/>
+    </form>
+    </li>
+</ul>
+</body>
+</html>
