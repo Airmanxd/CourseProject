@@ -7,7 +7,19 @@
 </head>
 <body>
 <header th:insert="fragments.html :: navbar"></header>
+<br>
 
+<form role="form" th:action="@{/products/categorized}" th:method="post">
+    <h4>Sort products by category</h4>
+    <select id="category" name="category">
+        <option disabled selected value> -- select an option -- </option>
+        <option th:value="All" th:text="All"></option>
+        <option th:value="MedGlasses" th:text="Frames"></option>
+        <option th:value="Lenses" th:text="Lenses"></option>
+        <option th:value="SunGlasses" th:text="Sunglasses"></option>
+    </select>
+    <input type="submit" value="Sort"/>
+</form>
 <ul>
     <li th:each="product : ${products}">
         <img style="height: 400px; width: auto;" th:src="${product.imagePath}">
