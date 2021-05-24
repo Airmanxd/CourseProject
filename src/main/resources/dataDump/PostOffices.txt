@@ -1,2 +1,0 @@
-id: 1 name: Test city name: TestCity
-id: 2 name: Test2 city name: TestCity2

@@ -1,2 +1,0 @@
-id: 1 type: testType date: testDate
-id: 2 type: testType2 date: testDate2

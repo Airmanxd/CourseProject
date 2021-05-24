@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <header th:insert="fragments.html :: style"/>
+    <link th:href="@{/css/styles.css}" th:rel="stylesheet" />
 </head>
 <body>
-<header th:insert="fragments.html :: navbar"></header>
+<nav th:insert="fragments.html :: navbar"></nav>
 
 <H1 th:text="|Total price: ${total}|"></H1>
 <ul>
@@ -19,5 +19,9 @@
         </form>
     </li>
 </ul>
+<script th:src="@{https://code.jquery.com/jquery-3.5.1.slim.min.js}"></script>
+<script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/scripts.js}"></script>
+
 </body>
 </html>

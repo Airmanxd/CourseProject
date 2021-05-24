@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Registration</title>
-    <header th:insert="fragments.html :: style"/>
+    <link th:href="@{/css/styles.css}" th:rel="stylesheet" />
 </head>
 <body>
-<header th:insert="fragments.html::navbar"></header>
+<nav th:insert="fragments.html::navbar"></nav>
 
 <form role="form" th:action="@{/registration}" th:method="post" th:object="${user}">
     <lable>Name</lable>
@@ -19,5 +19,9 @@
 
     <input type="submit">
 </form>
+<script th:src="@{https://code.jquery.com/jquery-3.5.1.slim.min.js}"></script>
+<script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/scripts.js}"></script>
+
 </body>
 </html>

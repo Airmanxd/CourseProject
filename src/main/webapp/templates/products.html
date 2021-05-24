@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Products</title>
-    <header th:insert="fragments.html :: style"/>
+    <link th:href="@{/css/styles.css}" th:rel="stylesheet" />
 </head>
 <body>
-<header th:insert="fragments.html :: navbar"></header>
-<br>
+<nav th:insert="fragments.html :: navbar"></nav>
 
 <form role="form" th:action="@{/products/categorized}" th:method="post">
     <h4>Sort products by category</h4>
@@ -20,18 +19,29 @@
     </select>
     <input type="submit" value="Sort"/>
 </form>
-<ul>
-    <li th:each="product : ${products}">
-        <img style="height: 400px; width: auto;" th:src="${product.imagePath}">
-        <p th:text="${product.name}"></p>
-        <p th:text="${product.price}"></p>
-        <form th:action="@{|/user/addToCart/${product.productId}|}" th:method="get">
-            <input type="submit" value="Add to cart"/>
-        </form>
-        <form sec:authorize="hasRole('ROLE_ADMIN')" th:action="@{|/admin/deleteProduct/${product.productId}|}" th:method="get">
-        <input type="submit" value="Delete Product"/>
-    </form>
-    </li>
-</ul>
+<div class="container">
+    <div class="row">
+        <div th:each="product : ${products}" class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <img class="card-img-top" th:src="${product.imagePath}" alt="..." /></a>
+                <div class="card-body">
+                    <h4 class="card-title" th:text="${product.name}"></h4>
+                    <h5 th:text="${product.price}"></h5>
+                </div>
+                <div class="card-footer">
+                    <form th:action="@{|/user/addToCart/${product.productId}|}" th:method="get">
+                        <input type="submit" value="Add to cart"/>
+                    </form>
+                    <form sec:authorize="hasRole('ROLE_ADMIN')" th:action="@{|/admin/deleteProduct/${product.productId}|}" th:method="get">
+                        <input type="submit" value="Delete Product"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{https://code.jquery.com/jquery-3.5.1.slim.min.js}"></script>
+<script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/scripts.js}"></script>
 </body>
 </html>
