@@ -5,8 +5,10 @@
       lang = "en">
 <head>
     <title>Login</title>
-</head>
+    <header th:insert="fragments.html :: style"/>
+</header>
 <body>
+<header th:insert="fragments.html :: navbar"></header>
 <div th:if="${param.error}">
     Invalid username and password.
 </div>

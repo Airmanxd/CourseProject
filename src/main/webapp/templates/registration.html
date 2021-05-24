@@ -2,8 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Registration</title>
+    <header th:insert="fragments.html :: style"/>
 </head>
 <body>
+<header th:insert="fragments.html::navbar"></header>
+
 <form role="form" th:action="@{/registration}" th:method="post" th:object="${user}">
     <lable>Name</lable>
     <input type="text" id="name" name="name" placeholder="Name" th:field="*{username}">

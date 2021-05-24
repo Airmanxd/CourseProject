@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Product</title>
+    <header th:insert="fragments.html :: style"/>
 </head>
 <body>
+<div th:insert="fragments.html :: navbar"></div>
+
 <form role="form" th:action="@{/admin/addProduct}" th:method="post" th:object="${product}">
     <lable>Name</lable>
     <input type="text" id="name" name="name" placeholder="Name" th:field="*{name}">

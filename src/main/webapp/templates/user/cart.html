@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <header th:insert="fragments.html :: style"/>
 </head>
 <body>
+<header th:insert="fragments.html :: navbar"></header>
+
 <H1 th:text="|Total price: ${total}|"></H1>
 <ul>
     <li th:each="product : ${products}">
