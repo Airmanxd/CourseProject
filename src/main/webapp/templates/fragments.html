@@ -4,13 +4,13 @@
 <body>
 
 <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" th:href="@{/index}">Home</a>
+    <a class="navbar-brand" th:href="@{/products}">Store</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link" th:href="@{/products}">Products</a>
+            <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item nav-link" th:href="@{/index}">Home</a>
             <a class="nav-item nav-link" th:href="@{/registration}">Registration</a>
             <a class="nav-item nav-link" th:href="@{/login}">Login</a>
             <a class="nav-item nav-link" sec:authorize="hasRole('ROLE_USER')" th:href="@{/user/cart}">Cart</a>
