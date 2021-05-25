@@ -23,7 +23,7 @@ public class HomeController {
     @GetMapping("index")
     public String home_page(){ return "index";}
     @GetMapping("")
-    public String index(){ return "index";}
+    public String index(){ return "products";}
 
     @GetMapping("login")
     public String signIn() {
