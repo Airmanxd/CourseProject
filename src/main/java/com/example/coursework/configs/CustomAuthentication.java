@@ -32,8 +32,7 @@ public class CustomAuthentication implements AuthenticationProvider {
         UserDetails user = userService.loadUserByUsername(username);
         if(user == null || !passwordEncoder.matches(password, user.getPassword()))
             return null;
-        else
-        {
+        else {
             List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
             String role;
             if(username.equals("Admin"))

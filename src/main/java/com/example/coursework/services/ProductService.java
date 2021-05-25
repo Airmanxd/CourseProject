@@ -17,19 +17,13 @@ public class ProductService {
     @Autowired
     private ProductRepository repository;
 
-    @Transactional
-    public boolean addProduct(Product product) throws IOException
-    {
+    public boolean addProduct(Product product) throws IOException {
         log.info(String.format("Trying to add a product %s", product.getName()));
-
-
         if(repository.findByName(product.getName()) != null)
             return false;
-
         repository.save(product);
         return true;
     }
-
     public List<Product> getAll()
     {
         return repository.findAll();
@@ -40,9 +34,7 @@ public class ProductService {
         return repository.findByCategory(category);
     }
 
-    @Transactional
-    public boolean deleteProduct(Long id)
-    {
+    public boolean deleteProduct(Long id) {
         Product product = repository.findByProductId(id);
         if(product == null)
             return false;

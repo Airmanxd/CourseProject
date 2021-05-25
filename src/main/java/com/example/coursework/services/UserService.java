@@ -24,7 +24,6 @@ public class UserService implements UserDetailsService {
     private ProductRepository productRepository;
     private PasswordEncoder passwordEncoder;
 
-    @Transactional
     public boolean register(User request){
         if (userRepository.findByUsername(request.getUsername()) != null)
             return false;
@@ -39,16 +38,6 @@ public class UserService implements UserDetailsService {
         userRepository.save(request);
         log.info("Registering user " + request.getUsername() + " email: " + request.getEmail());
         return true;
-    }
-
-    public User login(String username, String password)
-    {
-        log.info("User " + username + "is logging in");
-        User user = userRepository.findByUsername(username);
-        if(user != null && passwordEncoder.matches(password, user.getPassword()))
-            return user;
-        else
-            return null;
     }
 
     public boolean addToCart(Long id, User user){
@@ -79,6 +68,8 @@ public class UserService implements UserDetailsService {
 
     public boolean deleteUser(String username)
     {
+        log.info(String.format("Trying to delete user %s", username));
+
         User user = userRepository.findByUsername(username);
         if(user == null)
             return false;
