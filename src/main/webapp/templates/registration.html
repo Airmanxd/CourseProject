@@ -6,19 +6,24 @@
 </head>
 <body>
 <nav th:insert="fragments.html::navbar"></nav>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form role="form" th:action="@{/registration}" th:method="post" th:object="${user}">
+                <lable>Name</lable>
+                <input type="text" id="name" name="name" placeholder="Name" th:field="*{username}">
 
-<form role="form" th:action="@{/registration}" th:method="post" th:object="${user}">
-    <lable>Name</lable>
-    <input type="text" id="name" name="name" placeholder="Name" th:field="*{username}">
+                <lable>Email</lable>
+                <input type="text" id="email" name="email" placeholder="email" th:field="*{email}">
 
-    <lable>Email</lable>
-    <input type="text" id="email" name="email" placeholder="email" th:field="*{email}">
+                <lable>Password</lable>
+                <input type="password" id="password" name="password" placeholder="password" th:field="*{password}">
 
-    <lable>Password</lable>
-    <input type="password" id="password" name="password" placeholder="password" th:field="*{password}">
-
-    <input type="submit">
-</form>
+                <input type="submit" value="Register">
+            </form>
+        </div>
+    </div>
+</div>
 <script th:src="@{https://code.jquery.com/jquery-3.5.1.slim.min.js}"></script>
 <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js}"></script>
 <script th:src="@{/js/scripts.js}"></script>
